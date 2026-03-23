@@ -1,0 +1,24 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Form page
+app.get('/', (req, res) => {
+    res.send(`
+        <form method="POST" action="/submit">
+            Name: <input name="name"><br>
+            Age: <input name="age"><br>
+            <button type="submit">Submit</button>
+        </form>
+    `);
+});
+
+// Handle form
+app.post('/submit', (req, res) => {
+    const { name, age } = req.body;
+    res.send("Received: " + name + " - " + age);
+});
+
+app.listen(3000, () => console.log("Server running"));
