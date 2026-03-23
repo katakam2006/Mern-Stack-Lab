@@ -1,0 +1,15 @@
+import React from "react";
+
+function App() {
+  const items = ["Apple", "Banana", "Mango"];
+
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default App;
